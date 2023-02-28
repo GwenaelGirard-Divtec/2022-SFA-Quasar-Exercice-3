@@ -41,8 +41,17 @@ Sert à calculer, trier, filtrer ou formater les donneés
  */
 const getters = {
   // Récupère les plats
+  // TODO Simplifier la syntaxe de retour
+  // plats: (state) => state.plats
   plats: (state) => {
-    return state.plats
+    return [...state.plats].sort(function (a, b) { return a.nom.localeCompare(b.nom, 'fr') })
+    // TODO retourner une copie du state
+    // TODO ajouter un tri aux données
+    /*
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    // https://usefulangle.com/post/227/javascript-sort-array-of-objects
+    // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+    */
   }
 }
 
@@ -56,6 +65,8 @@ const mutations = {
    * @param state
    * @param plat plat à ajouter
    */
+  // TODO nommer les actions en majuscules
+  // ajouterPlat => AJOUTER_PLAT
   ajouterPlat (state, plat) {
     state.plats.push(plat)
   },
@@ -101,6 +112,19 @@ const actions = {
     if (state.plats.length) {
       uId = Math.max(...state.plats.map(plat => plat.id)) + 1
     }
+    /*
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+      let a = [10, 20]
+      let b = [4, ...a]
+
+      console.log(b)
+
+      a = {nom: 'Steve', age: 33}
+      b = {prenom: 'paul', ...a}
+
+      console.log(b)
+
+     */
 
     plat.id = uId
     commit('ajouterPlat', plat)

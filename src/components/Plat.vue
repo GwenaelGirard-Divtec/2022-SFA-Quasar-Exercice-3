@@ -1,6 +1,7 @@
 <template>
   <q-card
     class="card">
+    <!-- TODO mettre image de remplacement -->
     <q-img
       :src="plat.image ? plat.image : 'statics/image-placeholder.png'"
       basic

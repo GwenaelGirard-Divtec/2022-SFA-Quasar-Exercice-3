@@ -34,6 +34,7 @@
             v-model="plat.image"
             label="URL de l'image"
             class="col"/>
+          <!-- TODO img remplacement -->
           <q-img
             :src="plat.image ? plat.image : 'statics/image-placeholder.png'"
             class="q-ml-sm"
@@ -116,6 +117,8 @@ export default {
 
   mounted () {
     if (this.platAModifier) {
+      // TODO simplifier : this.plat = { ...this.platAModifier }
+      // Ou structuredClone() https://developer.mozilla.org/en-US/docs/Web/API/structuredClone
       this.plat = Object.assign({}, this.platAModifier)
     }
   }
